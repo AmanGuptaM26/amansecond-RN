@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import { View, Text, StyleSheet,  Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import Card from '../components/Cards';
 import Colors from '../constants/Colors';
 import Input from '../components/Input';
@@ -13,7 +13,7 @@ const StartGameScreen = props => {
     const numberInputHandler = (inputValue) => {
         //if(value)
         //return;
-        console.log(inputValue);
+       // console.log(inputValue);
         setEnteredValue(inputValue.replace(/[^0-9]/g, ''));
     };
 
@@ -26,8 +26,8 @@ const StartGameScreen = props => {
 
     const confirmInputHandler = () => {
         const choosenNumber = parseInt(enteredValue);
-        if (isNaN(choosenNumber) || choosenNumber <= 0 || choosenNumber > 999) {
-            Alert.alert('Invalid Number!', 'Choose between 1 to 999 only',
+        if (isNaN(choosenNumber) || choosenNumber <= 0 || choosenNumber > 99) {
+            Alert.alert('Invalid Number!', 'Choose between 1 to 99 only',
                 [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler }]);
             return;
         }
@@ -63,12 +63,12 @@ const StartGameScreen = props => {
             Keyboard.dismiss();
         }}>
             <View style={styles.screen}>
-                <Text style={styles.title}>Start New Game</Text>
+                {/* <Text style={styles.title}>Start New Game</Text> */}
                 <Card style={styles.inputContainer}>
-                    <Text>Select a number</Text>
+                    <Text>Select a number between 1 to 99</Text>
                     <Input
-                        //  placeholder="Test"
-                        maxLength={3}
+                     placeholder="Enter Number"
+                        maxLength={2}
                         keyboardType="number-pad"
                         autoCorrect={false}
                         blurOnSubmit
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
         // flex: 1,
         padding: 10,
         alignItems: 'center',
+      //  marginTop:250
     },
     title: {
         fontSize: 20,

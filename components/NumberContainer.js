@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, Keyboard, Alert, ImagePropTypes } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Color from '../constants/Colors'
 const NumberContainer = (props) => {
     return (

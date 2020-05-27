@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 import Card from '../components/Cards';
 import NumberContainer from '../components/NumberContainer';
 
@@ -17,8 +17,15 @@ const getRandomComputerGuess = (min, max, selectedNumber) => {
 const GameScreen = (props) => {
 
     const [computerGuess, setComputerGuess] = useState(getRandomComputerGuess(1, 100, props.userChoice));
+    const [rounds, setRound] = useState(0);
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
+    const { userChoice, onGameOver } = props;
+    useEffect(() => {
+        if (computerGuess === userChoice) {
+            onGameOver(rounds);
+        }
+    }, [userChoice, computerGuess, onGameOver]);
 
     const getNewGuessNumber = (direction) => {
 
@@ -35,7 +42,7 @@ const GameScreen = (props) => {
         }
 
         setComputerGuess(getRandomComputerGuess(currentLow.current, currentHigh.current, computerGuess));
-
+        setRound(CurRounds => CurRounds + 1);
     };
 
     return (

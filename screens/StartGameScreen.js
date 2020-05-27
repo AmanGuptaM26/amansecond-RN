@@ -36,11 +36,13 @@ const StartGameScreen = props => {
         setEnteredValue('');
         Keyboard.dismiss();
     };
-    
-const startGameHandler =() =>{
-Alert.alert('So ja moti bains!!!','Bains hoke ullo ki jase kyu jagti hai raat ko',
-[{text:'Okay main bains hun',style:'destructive', onPress:resetInputHandler}])
-};
+
+  //  const startGameHandler = () => {
+        // Alert.alert('So ja moti bains!!!', 'Bains hoke ullo ki jase kyu jagti hai raat ko',
+        //     [{ text: 'Okay main bains hun', style: 'destructive', onPress: resetInputHandler }])
+
+
+  //  };
 
     let confirmedOutput;
 
@@ -51,7 +53,7 @@ Alert.alert('So ja moti bains!!!','Bains hoke ullo ki jase kyu jagti hai raat ko
                     Choosen Number
                 </Text>
                 <NumberContainer>{selectedNumber}</NumberContainer>
-                <Button title="Start Game" onPress={startGameHandler} />
+                <Button title="Start Game" onPress={()=>props.onStartGame(selectedNumber)} />
             </Card>
         );
     }
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
     },
     summaryCard: {
         marginTop: 20,
-        alignItems:"center"
+        alignItems: "center"
     }
 });
 
